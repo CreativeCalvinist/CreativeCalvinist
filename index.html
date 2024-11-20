@@ -7,61 +7,192 @@
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #e6f2f7;
-            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #0a2342;
+            display: grid;
+            grid-template-columns: 1fr 200px;
+            grid-template-rows: auto 1fr auto;
+            min-height: 100vh;
         }
         header {
+            grid-column: 1 / 3;
+            background-color: #0a1128;
+            color: white;
             text-align: center;
-            border-bottom: 2px solid #4682B4;
-            padding-bottom: 10px;
+            padding: 20px;
+            cursor: pointer;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
         }
-        nav {
-            display: flex;
-            justify-content: space-around;
-            margin: 20px 0;
+        header h1 {
+            text-shadow: 2px 2px 4px #B8860B;
         }
-        nav a {
+        .sidebar-eras {
+            grid-column: 2;
+            background-color: #f0f0f0;
+            padding: 20px;
+            position: sticky;
+            top: 19mm;
+            left: -100mm;
+        }
+        .sidebar-eras a {
+            display: block;
             color: #1E4D8C;
             text-decoration: none;
             padding: 10px;
+            margin: 5px 0;
             border: 1px solid #4682B4;
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
-        nav a:hover {
+        .sidebar-eras a:hover {
             background: linear-gradient(to right, #B8860B, #DAA520);
             color: white;
         }
+        .main-content {
+            grid-column: 1;
+            padding: 20px;
+            margin-top: -95mm;
+        }
         .latest-review {
+            text-decoration: none;
+            color: inherit;
             background-color: #ffffff;
             padding: 20px;
             margin-bottom: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             border-top: 4px solid #B8860B;
+            display: grid;
+            grid-template-columns: 1fr 200px;
+            transition: background-color 0.3s ease;
+        }
+        .latest-review:hover {
+            background-color: rgba(255,255,255,0.9);
+        }
+        .review-thumb {
+            max-width: 200px;
+            max-height: 300px;
+            object-fit: cover;
+        }
+        .review-item a {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            background-color: #ffffff;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: inherit;
+            transition: background-color 0.3s ease;
+        }
+        .review-item a:hover {
+            background-color: rgba(255,255,255,0.7);
+        }
+        .review-item img {
+            max-width: 100px;
+            max-height: 150px;
+            object-fit: cover;
+        }
+        footer {
+            grid-column: 1 / 3;
+            background-color: #0a1128;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 50%;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+        }
+        footer a:hover {
+            background-color: rgba(255,255,255,0.2);
         }
     </style>
 </head>
 <body>
-    <header>
+    <header onclick="window.scrollTo(0,0);">
         <h1>Legends of the Galaxy: Star Wars Book Reviews</h1>
     </header>
 
-    <nav>
-        <a href="old-republic.html">Old Republic Era</a>
+    <div class="sidebar-eras">
+        <h3>Eras</h3>
+        <a href="#old-republic">Old Republic Era</a>
         <a href="#rise-of-empire">Rise of Empire Era</a>
         <a href="#original-trilogy">Original Trilogy Era</a>
         <a href="#new-republic">New Republic Era</a>
         <a href="#new-jedi-order">New Jedi Order Era</a>
-    </nav>
+    </div>
 
-    <section class="latest-review">
-        <h2>Latest Review: Vector Prime</h2>
-        <p>R.A. Salvatore's groundbreaking novel that launched the New Jedi Order series, marking a pivotal moment in Star Wars Legends continuity.</p>
-        <p>★★★★☆ 4/5 Stars</p>
-    </section>
+    <main class="main-content">
+        <a href="vector-prime.html" class="latest-review">
+            <div>
+                <h2>Latest Review: Vector Prime</h2>
+                <p>R.A. Salvatore's groundbreaking novel that launched the New Jedi Order series, marking a pivotal moment in Star Wars Legends continuity.</p>
+                <p>★★★★☆ 4/5 Stars</p>
+            </div>
+            <img src="/api/placeholder/200/300" alt="Book Cover" class="review-thumb">
+        </a>
+
+        <div class="recent-reviews">
+            <div class="review-item">
+                <a href="heir-to-the-empire.html">
+                    <img src="/api/placeholder/100/150" alt="Book Cover">
+                    <div>
+                        <h4>Heir to the Empire</h4>
+                        <p>★★★★★ 5/5 Stars</p>
+                    </div>
+                </a>
+            </div>
+            <div class="review-item">
+                <a href="darth-bane.html">
+                    <img src="/api/placeholder/100/150" alt="Book Cover">
+                    <div>
+                        <h4>Darth Bane: Path of Destruction</h4>
+                        <p>★★★★☆ 4/5 Stars</p>
+                    </div>
+                </a>
+            </div>
+            <div class="review-item">
+                <a href="labyrinth-of-evil.html">
+                    <img src="/api/placeholder/100/150" alt="Book Cover">
+                    <div>
+                        <h4>Labyrinth of Evil</h4>
+                        <p>★★★★☆ 4/5 Stars</p>
+                    </div>
+                </a>
+            </div>
+            <div class="review-item">
+                <a href="shatterpoint.html">
+                    <img src="/api/placeholder/100/150" alt="Book Cover">
+                    <div>
+                        <h4>Shatterpoint</h4>
+                        <p>★★★★☆ 4/5 Stars</p>
+                    </div>
+                </a>
+            </div>
+            <div class="review-item">
+                <a href="x-wing-rogue-squadron.html">
+                    <img src="/api/placeholder/100/150" alt="Book Cover">
+                    <div>
+                        <h4>X-Wing: Rogue Squadron</h4>
+                        <p>★★★★☆ 4/5 Stars</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <a href="#">About</a>
+        <a href="#">Request a Novel Review</a>
+    </footer>
 </body>
 </html>
